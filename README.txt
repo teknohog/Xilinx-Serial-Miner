@@ -67,22 +67,31 @@ Usage
 
 http://www.fpga4fun.com/files/async.zip
 
-and change the clock frequency definition in both files to suit your
-oscillator.
+and unzip it into sources/hdl to go with the other files. Change the
+clock frequency definition in both files to suit your oscillator.
 
 (I have discussed this with the author of fpga4fun, and he has OK'd
 this kind of linking. However, it might be more convenient in the
 future to have our own serial code here.)
 
 
-2. Build the design -- I do this in a simple command line fashion, so
-all the necessary files are `included in the source files.
+2. Build the design and program the FPGA. At the moment, the source is
+treated as the single fpgaminer_top file, using includes.
 
-I use nexys2prog and its associated build script, here is a little
-more information:
+Here are some ways I have used succesfully, you can of course use
+Xilinx ISE or something else:
+
+2a. boldport:
+
+$ make -f scripts/Makefile TOP_PATH=`pwd` bit
+
+This builds a bit file for a Spartan 3E 500K. To generate a suitable
+Makefile for other FPGAs, see https://www.boldport.com/.
+
+2b. Nexys2prog and its associated build script:
 
 http://ixo-jtag.sourceforge.net/nexys2-linux-howto.html
-
+ 
 
 3. Edit your details such as username and serial port in miner.py, and
 start mining. It requires a few non-standard libraries, pyserial and
@@ -108,6 +117,12 @@ Todo
 
 Release notes
 -------------
+
+2011-06-20
+
+* Moved to Github
+* Introduced boldport as an optional build system, thanks to Saar
+  Drimer.
 
 2011-06-08
 
