@@ -70,6 +70,9 @@ http://www.fpga4fun.com/files/async.zip
 and unzip it into sources/hdl to go with the other files. Change the
 clock frequency definition in both files to suit your oscillator.
 
+Note that this async code is not free software, and it cannot be
+redistributed without a permission from fpga4fun.
+
 (I have discussed this with the author of fpga4fun, and he has OK'd
 this kind of linking. However, it might be more convenient in the
 future to have our own serial code here.)
