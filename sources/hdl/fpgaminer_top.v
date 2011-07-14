@@ -26,13 +26,11 @@
 `include "sha256_transform.v"
 `include "serial.v" // replaces virtual_wire
 
-`include "display7seg.v"
+`include "raw7seg.v"
 
 `timescale 1ns/1ps
 
-//module fpgaminer_top (osc_clk, RxD, TxD);
-module fpgaminer (osc_clk, RxD, TxD, anode, segment);
-//module fpgaminer_top (osc_clk, RxD, TxD, anode, segment, led);
+module fpgaminer_top (osc_clk, RxD, TxD, anode, segment, disp_switch);
 
 	// The LOOP_LOG2 parameter determines how unrolled the SHA-256
 	// calculations are. For example, a setting of 1 will completely
@@ -184,15 +182,18 @@ module fpgaminer (osc_clk, RxD, TxD, anode, segment);
 	end
 
    // die debuggenlichten
-   
+
+   input disp_switch;
    output [7:0] segment;
    output [3:0] anode;
-//   display7seg disp(.clk(hash_clk), .segment(segment), .anode(anode), .word({midstate_vw[15:0], data2_vw[15:0]}));
-   display7seg disp(.clk(hash_clk), .segment(segment), .anode(anode), .word(golden_nonce));
 
-//   output [7:0] led;
-//   assign led = golden_nonce[7:0];
+   wire [7:0] 	segment_data;
+
+   // inverted signals, so 1111.. to turn it off
+   assign segment = disp_switch? segment_data : {8{1'b1}};
    
+//   raw7seg disp(.clk(hash_clk), .segment(segment_data), .anode(anode), .word({midstate_vw[15:0], data2_vw[15:0]}));
+   raw7seg disp(.clk(hash_clk), .segment(segment_data), .anode(anode), .word(golden_nonce));
    
 endmodule
 

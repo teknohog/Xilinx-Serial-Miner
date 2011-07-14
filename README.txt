@@ -121,6 +121,11 @@ Todo
 Release notes
 -------------
 
+2011-07-14
+
+* 7-segment display is now enabled by the nearest slide switch (SW0),
+  to reduce the amount of unnecessary lighting.
+
 2011-06-20
 
 * Moved to Github
