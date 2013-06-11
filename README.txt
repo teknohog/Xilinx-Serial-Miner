@@ -2,6 +2,15 @@ Xilinx Serial Miner
 -------------------
 by Risto A. Paju, teknohog at iki.fi
 
+This project is no longer being updated. For newer and more capable versions
+of the Bitcoin miner, proceed to
+
+https://github.com/teknohog/Open-Source-FPGA-Bitcoin-Miner
+
+instead. The corresponding project there is Verilog_Xilinx_Port.
+
+
+-------------------
 
 This is a port of fpgaminer's
 
